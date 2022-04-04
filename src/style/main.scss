@@ -1,0 +1,256 @@
+// colors
+$hearsay-maroon: rgb(139, 12, 29);
+$offwhite: rgb(190, 190, 190);
+
+// font size
+$item-title-font-size: 30px;
+$description-font-size: 20px;
+$menus-head-font-size: 40px;
+$menus-list-font-size: 20px;
+
+html {
+    font-size: 62.5%; // 1rem is 10px
+    max-width: 100vw;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: "montserrat";
+}
+
+body {
+    overflow-x: hidden;
+    font-weight: normal;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.app {
+    display: grid;
+    justify-items: center;
+    // background-color: red;
+
+    .app-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        min-height: 95vh;
+    }
+}
+
+// ============= HEADER ==============
+
+.header {
+    .header-wrapper {
+        .header-logo {
+            text-align: center;
+            img {
+                width: 90vw;
+            }
+        }
+        .burger {
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            .burger-menu {
+                // visibility: hidden;
+                display: none;
+                position: absolute;
+                z-index: 12;
+
+                left: 0px;
+                right: 0px;
+
+                background-color: whitesmoke;
+
+                .menu-item-navigation-choice {
+                    background-color: $offwhite;
+                    color: $hearsay-maroon;
+                }
+
+                .menu-item-wrapper {
+                    border: 1px black solid;
+
+                    .menu-item:hover {
+                        color: $hearsay-maroon;
+                        background-color: gray;
+                    }
+                    .menu-item-navigation-choice:hover {
+                        background-color: $offwhite;
+                    }
+                }
+            }
+
+            // TO DO add functionality: click on burger same as hover
+            &:hover {
+                .burger-menu {
+                    // visibility: visible;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+// ============= END OF HEADER ==============
+
+// ================ HOMEPAGE =================
+.homepage {
+    .homepage-wrapper {
+        .content {
+            .content-wrapper {
+                .greeting {
+                    font-size: $description-font-size;
+                    text-align: center;
+                    background-color: whitesmoke;
+
+                    span {
+                        color: $hearsay-maroon;
+                    }
+                }
+
+                .menu-navigation {
+                    font-size: $menus-list-font-size;
+                    text-align: center;
+                    padding: 15px 0;
+
+                    p {
+                        color: $hearsay-maroon;
+                    }
+
+                    .menu-item-wrapper {
+                        transition: 100ms ease-out;
+                        &:hover {
+                            background-color: whitesmoke;
+                            a {
+                                color: $hearsay-maroon;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// ================ END OF HOMEPAGE =================
+
+// ================ MENUS =================
+.menus-wrapper {
+    width: 100%;
+    .menus {
+        text-align: center;
+
+        .menus-head-wrapper {
+            .menus-head {
+                color: $hearsay-maroon;
+                font-size: $menus-head-font-size;
+            }
+        }
+
+        .menu-selection-wrapper {
+            // add styles:
+            // Dinner, Brunch, Vegeterian, etc
+
+            font-size: $menus-list-font-size;
+
+            ul {
+                list-style: none;
+            }
+        }
+    }
+}
+// ================ END OF MENUS =================
+
+// ================ CHOOSEN MENU (Dinner, brunch, drinks etc) =================
+.choosen-menu-wrapper {
+    .choosen-menu {
+        .choosen-menu-title-wrapper {
+            .choosen-menu-title {
+                text-align: center;
+                font-size: $menus-head-font-size;
+                color: $hearsay-maroon;
+            }
+        }
+    }
+}
+// ================ END OF CHOOSEN MENU =================
+
+// ================ MENUITEM =================
+.menu-item-wrapper {
+    .menu-item {
+        .menu-title-wrapper {
+            .menu-title {
+                color: $hearsay-maroon;
+            }
+        }
+        .menu-item-title-wrapper {
+            // crab crusted redfish
+            text-align: center;
+            font-size: $item-title-font-size;
+        }
+
+        .menu-item-description-wrapper {
+            .menu-item-description {
+                // pan seared redfish topped…
+                font-size: $description-font-size;
+            }
+        }
+
+        .menu-image-wrapper {
+            width: 100%;
+
+            .menu-image {
+                width: 100%;
+                .image {
+                    background-color: gray;
+                    height: 300px;
+                }
+            }
+            .sketchfab-embed-wrapper {
+                width: 100%;
+
+                iframe {
+                    width: 100%;
+                    height: 300px;
+                }
+            }
+        }
+    }
+}
+// ================ END OF MENUITEM =================
+
+// ================ FOOTER =================
+.footer-wrapper {
+    display: flex;
+    justify-content: center;
+
+    // position: fixed;
+    // bottom: 0;
+    // background-color: rgba($color: #c4c4c4, $alpha: 0.7);
+    padding: 10px 10px 0 10px;
+    width: 100%;
+}
+// ================ END OF FOOTER =================
+
+// ================ NO MATCH =================
+.no-match-wrapper {
+    display: flex;
+    .no-match {
+        font-size: 5vh;
+        text-align: center;
+    }
+}

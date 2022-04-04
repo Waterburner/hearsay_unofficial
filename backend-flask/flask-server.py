@@ -23,20 +23,29 @@ mysql = MySQL(app)
 
 # =================== testing ==================
 
-@app.route('/', methods=['GET', 'POST'])
+class AllMenus:
+    def __init__(menu, number, id, name):
+        menu.id = id
+        menu.name = name
+
+@app.route('/', methods=['GET'])
+# def index():
+    # Fetch form data
+    # cur = mysql.connection.cursor()
+    # cur.execute("SELECT * FROM menus")
+    # menusDetails = cur.fetchall()
+    # return render_template('index.html', menusDetails=menusDetails)
+
 def index():
-    if request.method == 'POST':
-        # Fetch form data
-        userDetails = request.form
-        name = userDetails['name']
-        email = userDetails['email']
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO users(name, email) VALUES(%s, %s)",(name, email))
-        mysql.connection.commit()
-        cur.close()
-        print('success')
-        return redirect('/users')
-    return render_template('index.html')
+    # Fetch form data
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * FROM menus")
+    menusDetails = cur.fetchall()
+    
+    m1 = menusDetails
+
+    return render_template('index.html', menusDetails=menusDetails, m1=m1)
+
 
 @app.route("/test")
 def test():

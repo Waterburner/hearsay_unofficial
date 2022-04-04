@@ -1,7 +1,13 @@
-<form method="POST">
-    Name <input type="text" name="name" />
-    <br />
-    Email <input type="email" name="email" />
-    <br />
-    <input type="submit" />
-</form>
+<table border="1">
+    {% for menu in menusDetails %}
+    <tr>
+        <td>{{menu[0]}}</td>
+        <td>{{menu[1]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p>==============================================</p>
+{% for menu in menusDetails %}
+<p>Menu name first letter: {{menu[1][0]}}</p>
+<!-- <p>Menu ID: {{menu[0]}}, Menu name: {{menu[1]}}</p> -->
+{% endfor %}

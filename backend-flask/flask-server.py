@@ -35,10 +35,23 @@ def allMenus():
 @app.route(f"/menu_id=<id>")
 def certainMenu(id):
     cur = mysql.connection.cursor()
-    # cur.execute(f"SET @menu_id = {id}")
     cur.execute(f"SELECT * FROM menus WHERE menus_id={id}") # menu_id is variable
     menusDetails = cur.fetchall()
-    return render_template('index.html', menusDetails=menusDetails) 
+    cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={id}")
+    menuName = cur.fetchall()[0][0]
+    cur.execute(f"SELECT * FROM {menuName}")
+    menuItems = cur.fetchall()
+    return render_template('certainMenu.html', menusDetails=menusDetails, menuItems=menuItems) 
+
+# get certain item
+@app.route(f"/item_id=<id>+<menu_id>")
+def certainItem(id, menu_id):
+    cur = mysql.connection.cursor()
+    cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={menu_id}")
+    targetMenu = cur.fetchall()[0][0]
+    cur.execute(f"SELECT * FROM {targetMenu} WHERE {targetMenu}_id={id}")
+    item = cur.fetchall()
+    return render_template('menuItem.html', item=item) 
 
 # =================== testing ==================
 

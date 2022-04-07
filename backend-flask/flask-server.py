@@ -53,6 +53,24 @@ def certainItem(id, menu_id):
     item = cur.fetchall()
     return render_template('menuItem.html', item=item) 
 
+    # NOT WORKING :(
+@app.route(f"/allitems")
+def allItems():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT menus_actual_name FROM menus")
+    allMenus = cur.fetchall()
+    allItems = [0,]
+    # for loop to go thrugh allMenus and save all items in allItems
+    for menu in allMenus:
+        cur.execute(f"SELECT * FROM {menu[0]}")
+        newItems = cur.fetchall()
+        allItems.append(newItems)
+    allItems.remove(0)
+    return render_template('allItems.html', allItems=allItems[0]) 
+    # NOT WORKING :(
+
+
+
 # =================== testing ==================
 
 # class AllMenus:

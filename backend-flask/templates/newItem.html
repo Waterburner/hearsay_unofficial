@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <form method="POST">
+            <div class="form-field">
+                menu (should be dropdown)
+                <!-- drop down menu should be with option "dinner", "brunch", "drink", etc -->
+                <input type="text" name="menu" placeholder="1" />
+            </div>
+
+            <div class="form-field">
+                Name
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Crab crusted redfish"
+                />
+            </div>
+            <div class="form-field">
+                Description
+                <input
+                    type="text"
+                    name="description"
+                    placeholder="Pan seared redfish topped with crabcrast and baked in the oven. Drizzled with lemon butter sauce"
+                />
+            </div>
+
+            <div class="form-field">
+                Image link
+                <input
+                    type="text"
+                    name="img-link"
+                    placeholder="https://blahblah.blah/foo.jpg"
+                />
+            </div>
+
+            <div class="form-field">
+                3D link
+                <input
+                    type="text"
+                    name="scan-link"
+                    placeholder="https://sketchfab.com/foo…"
+                />
+            </div>
+
+            <input type="submit" />
+        </form>
+    </body>
+</html>

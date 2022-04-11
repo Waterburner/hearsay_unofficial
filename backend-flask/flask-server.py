@@ -53,6 +53,7 @@ def certainItem(id, menu_id):
     item = cur.fetchall()
     return render_template('menuItem.html', item=item) 
 
+# =====================================================================
     # NOT WORKING :(
 @app.route(f"/allitems")
 def allItems():
@@ -68,6 +69,27 @@ def allItems():
     allItems.remove(0)
     return render_template('allItems.html', allItems=allItems[0]) 
     # NOT WORKING :(
+# =====================================================================
+
+@app.route("/newitem", methods=['GET','POST'])
+@app.route("/newItem", methods=['GET','POST'])
+def newItem():
+    if request.method=='POST':
+        item = request.form
+        itemMenuID = item['menu']
+        itemName = item['name']
+        itemDescription = item['description']
+        itemImgLink = item['img-link']
+        # itemScanLink = item['scan-link']
+        cur = mysql.connection.cursor()
+        cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={itemMenuID}")
+        menuName = cur.fetchall()[0][0]
+        cur.execute(f"INSERT INTO {menuName}({menuName}_name, {menuName}_description, {menuName}_link, {menuName}_belongs_to_id) VALUES('{itemName}', '{itemDescription}', '{itemImgLink}', {itemMenuID}")
+        mysql.connection.commit()
+        cur.close()
+        return redirect(f'/menu_id={itemMenuID}')
+        # return 
+    return render_template('newItem.html')
 
 
 

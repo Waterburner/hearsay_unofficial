@@ -55,22 +55,6 @@ def certainItem(id, menu_id):
 
 # =====================================================================
     # NOT WORKING :(
-@app.route(f"/allitems")
-def allItems():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT menus_actual_name FROM menus")
-    allMenus = cur.fetchall()
-    allItems = [0,]
-    # for loop to go thrugh allMenus and save all items in allItems
-    for menu in allMenus:
-        cur.execute(f"SELECT * FROM {menu[0]}")
-        newItems = cur.fetchall()
-        allItems.append(newItems)
-    allItems.remove(0)
-    return render_template('allItems.html', allItems=allItems[0]) 
-    # NOT WORKING :(
-# =====================================================================
-
 @app.route("/newitem", methods=['GET','POST'])
 @app.route("/newItem", methods=['GET','POST'])
 def newItem():
@@ -90,6 +74,23 @@ def newItem():
         return redirect(f'/menu_id={itemMenuID}')
         # return 
     return render_template('newItem.html')
+    # NOT WORKING :(
+# =====================================================================
+
+@app.route(f"/allitems")
+def allItems():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT menus_actual_name FROM menus")
+    allMenus = cur.fetchall()
+    # for loop to go thrugh allMenus and save all items in allItems
+    allItems = []
+    for menu in allMenus:
+        cur.execute(f"SELECT * FROM {menu[0]}")
+        # newItems = cur.fetchall()
+        # allItems.append(newItems)
+        allItems.append(cur.fetchall())
+    return render_template('allItems.html', allMenus=allMenus, allItems=allItems) 
+
 
 
 

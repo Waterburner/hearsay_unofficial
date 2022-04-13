@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Delete item from menu</title>
+    </head>
+    <body>
+        <form method="POST">
+            <div class="form-field">
+                are you sure you want to delete?
+
+                <div>
+                    <h2>{{itemToDeleteName}}</h2>
+                    <p>{{itemToDeleteDescription}}</p>
+                </div>
+
+                <input
+                    type="text"
+                    name="confirmation"
+                    placeholder="1=yes, 0=no"
+                />
+            </div>
+
+            <input type="submit" />
+        </form>
+    </body>
+</html>

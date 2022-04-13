@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 import yaml
@@ -54,8 +55,46 @@ def certainItem(id, menu_id):
 
 # =====================================================================
     # NOT WORKING :(
+
+@app.route("/deleteitem", methods=['GET','POST'])
+@app.route("/deleteItem", methods=['GET','POST'])
+def deleteItem():
+    if request.method=='POST':
+        item = request.form
+        itemMenuID = item['menu']
+        itemID = item['id']
+        cur = mysql.connection.cursor()
+        cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={itemMenuID}")
+        menuName = cur.fetchall()[0][0]
+        cur.execute(f"SELECT {menuName}_name, {menuName}_description FROM {menuName} WHERE {menuName}_id={itemID}")
+        itemToDelete = cur.fetchall()[0]
+        return redirect(f"/confirmDeletion={itemMenuID}/{itemID}/{menuName}/{itemToDelete[0]}/{itemToDelete[1]}")
+    return render_template("deleteItem.html")
+
+    # mysql.connection.commit()
+    # cur.close()
+    # return redirect(f"/menu_id={itemMenuID}")
+
+
+@app.route("/confirmDeletion=<itemMenuID>/<itemID>/<menuName>/<itemToDeleteName>/<itemToDeleteDescription>")
+def confirmDeletion(itemMenuID, itemID, menuName, itemToDeleteName, itemToDeleteDescription):
+    if request.method=='POST':
+        deletion = request.form
+        deletionConfirmation = deletion['confirmation']
+        if deletionConfirmation == 1:
+           cur = mysql.connection.cursor() 
+           cur.execute(f"DELETE FROM {menuName} WHERE ({menuName}_id={itemID})")
+           mysql.connection.commit()
+           cur.close()
+           return redirect(f"/menu_id={itemMenuID}")
+        return redirect(f"/menu_id={itemMenuID}")
+    return render_template('confirmDeletion.html', itemMenuID=itemMenuID, itemID=itemID, menuName=menuName, itemToDeleteName=itemToDeleteName, itemToDeleteDescription=itemToDeleteDescription)
+
+
+
     # NOT WORKING :(
 # =====================================================================
+
 
 @app.route("/newitem", methods=['GET','POST'])
 @app.route("/newItem", methods=['GET','POST'])

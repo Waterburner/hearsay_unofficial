@@ -56,6 +56,9 @@ def certainItem(id, menu_id):
 # =====================================================================
     # NOT WORKING :(
 
+    # END OF NOT WORKING :(
+# =====================================================================
+
 @app.route("/deleteitem", methods=['GET','POST'])
 @app.route("/deleteItem", methods=['GET','POST'])
 def deleteItem():
@@ -76,12 +79,12 @@ def deleteItem():
     # return redirect(f"/menu_id={itemMenuID}")
 
 
-@app.route("/confirmDeletion=<itemMenuID>/<itemID>/<menuName>/<itemToDeleteName>/<itemToDeleteDescription>")
+@app.route("/confirmDeletion=<itemMenuID>/<itemID>/<menuName>/<itemToDeleteName>/<itemToDeleteDescription>", methods=['GET','POST'])
 def confirmDeletion(itemMenuID, itemID, menuName, itemToDeleteName, itemToDeleteDescription):
     if request.method=='POST':
         deletion = request.form
         deletionConfirmation = deletion['confirmation']
-        if deletionConfirmation == 1:
+        if deletionConfirmation == "1":
            cur = mysql.connection.cursor() 
            cur.execute(f"DELETE FROM {menuName} WHERE ({menuName}_id={itemID})")
            mysql.connection.commit()
@@ -92,8 +95,6 @@ def confirmDeletion(itemMenuID, itemID, menuName, itemToDeleteName, itemToDelete
 
 
 
-    # NOT WORKING :(
-# =====================================================================
 
 
 @app.route("/newitem", methods=['GET','POST'])

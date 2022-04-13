@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 import yaml
@@ -55,6 +54,9 @@ def certainItem(id, menu_id):
 
 # =====================================================================
     # NOT WORKING :(
+    # NOT WORKING :(
+# =====================================================================
+
 @app.route("/newitem", methods=['GET','POST'])
 @app.route("/newItem", methods=['GET','POST'])
 def newItem():
@@ -68,14 +70,14 @@ def newItem():
         cur = mysql.connection.cursor()
         cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={itemMenuID}")
         menuName = cur.fetchall()[0][0]
-        cur.execute(f"INSERT INTO {menuName}({menuName}_name, {menuName}_description, {menuName}_link, {menuName}_belongs_to_id) VALUES('{itemName}', '{itemDescription}', '{itemImgLink}', {itemMenuID}")
+        cur.execute(f"INSERT INTO {menuName}({menuName}_name, {menuName}_description, {menuName}_link, {menuName}_belongs_to_id) VALUES('{itemName}', '{itemDescription}', '{itemImgLink}', {itemMenuID})")
+
+        # cur.execute(f"INSERT INTO brunch_menu (`brunch_menu_name`, `brunch_menu_description`, `brunch_menu_link`, `brunch_menu_belongs_to_id`) VALUES ('Texas Omlette', 'Omlette with smoked brisket, tomatoes, topped with avocado, pico, jallapenio', 'https://testing.com/lk', '2')")
+        # cur.execute(f"INSERT INTO dinner_menu (dinner_menu_name, dinner_menu_description, dinner_menu_link, dinner_menu_belongs_to_id) VALUES ('testName', 'testDes', 'testLink', 1)")
         mysql.connection.commit()
         cur.close()
-        return redirect(f'/menu_id={itemMenuID}')
-        # return 
+        return redirect('/allitems')
     return render_template('newItem.html')
-    # NOT WORKING :(
-# =====================================================================
 
 @app.route(f"/allitems")
 def allItems():

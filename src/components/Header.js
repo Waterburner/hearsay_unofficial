@@ -27,7 +27,7 @@ export default function () {
                         {/* burger-menu show: invisible */}
                         <div className="menu-navigation">
                             <div className="menu-item-wrapper">
-                                <h3 className=" menu-item-navigation-choice">
+                                <h3 className="menu-item-navigation-choice">
                                     navigation
                                 </h3>
                             </div>

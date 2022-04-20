@@ -252,5 +252,10 @@ a {
     .no-match {
         font-size: 5vh;
         text-align: center;
+        p {
+            font-size: small;
+        }
     }
 }
+
+@import "responsive-queries";

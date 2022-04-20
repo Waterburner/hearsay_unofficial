@@ -1,27 +1,37 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 
 export default function () {
+    // const [data, setData]  = useState([{}])
+
+    // useEffect(() => {
+    //     fetch("/")
+    // })
+
     return (
         <div className="menu-item-wrapper">
             <div className="menu-item">
-                <div className="menu-item-title-wrapper">
-                    <h3 className="menu-item-title">Crab crusted redfish</h3>
-                </div>
-                <div className="menu-item-description-wrapper">
-                    <div className="menu-item-description">
-                        Pan seared redfish topped with crab crust (jumbo-lumb
-                        crab with bell peppers and a little bit of breading to
-                        hold it together) and finished in the oven to the
-                        perfection. Topped with creamy lemon butter sauce,
-                        served on the bed of red pepper sauce and garlic
-                        blistered green beans
+                <div>
+                    <div className="menu-item-title-wrapper">
+                        <h3 className="menu-item-title">
+                            Crab crusted redfish
+                        </h3>
+                    </div>
+                    <div className="menu-item-description-wrapper">
+                        <div className="menu-item-description">
+                            Pan seared redfish topped with crab crust
+                            (jumbo-lumb crab with bell peppers and a little bit
+                            of breading to hold it together) and finished in the
+                            oven to the perfection. Topped with creamy lemon
+                            butter sauce, served on the bed of red pepper sauce
+                            and garlic blistered green beans
+                        </div>
                     </div>
                 </div>
 
                 <div className="menu-image-wrapper">
                     <div className="menu-image">
                         <div className="image">image goes here</div>
-                        <div className="3d-img">
+                        <div className="scan">
                             <div className="sketchfab-embed-wrapper">
                                 {" "}
                                 <iframe

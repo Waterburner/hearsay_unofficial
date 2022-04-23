@@ -1,6 +1,23 @@
 import React, { Component, useState, useEffect } from "react";
 
 export default function () {
+    // localhost:5000/
+
+    // list of all menus
+    //  /allmenus
+
+    // show all items (with description and pictures) from certain menu
+    //  /menu_id=<id>
+
+    // show cetrain item only
+    //  /item_id=<id>+<menu_id>
+
+    // show all items from all menus
+    //  /allitems
+
+    // state:
+    //
+
     // const [data, setData]  = useState([{}])
 
     // useEffect(() => {

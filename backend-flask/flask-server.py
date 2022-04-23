@@ -1,5 +1,6 @@
 from crypt import methods
-from flask import Flask, render_template, request, redirect
+from urllib import response
+from flask import Flask, render_template, request, redirect, jsonify
 from flask_mysqldb import MySQL
 import yaml
 
@@ -33,15 +34,26 @@ def allMenus():
 
 # get certain menu
 @app.route(f"/menu_id=<id>")
+# def certainMenu(id):
+#     cur = mysql.connection.cursor()
+#     cur.execute(f"SELECT * FROM menus WHERE menus_id={id}") # menu_id is variable
+#     menusDetails = cur.fetchall()
+#     cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={id}")
+#     menuName = cur.fetchall()[0][0]
+#     cur.execute(f"SELECT * FROM {menuName}")
+#     menuItems = cur.fetchall()
+#     return render_template('certainMenu.html', menusDetails=menusDetails, menuItems=menuItems) 
 def certainMenu(id):
     cur = mysql.connection.cursor()
-    cur.execute(f"SELECT * FROM menus WHERE menus_id={id}") # menu_id is variable
-    menusDetails = cur.fetchall()
+    cur.execute(f"SELECT menus_name FROM menus WHERE menus_id={id}") # menu_id is variable
+    choosenMenu = cur.fetchall()
     cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={id}")
     menuName = cur.fetchall()[0][0]
     cur.execute(f"SELECT * FROM {menuName}")
     menuItems = cur.fetchall()
-    return render_template('certainMenu.html', menusDetails=menusDetails, menuItems=menuItems) 
+
+    response = choosenMenu+menuItems
+    return jsonify(response) 
 
 # get certain item
 @app.route(f"/item_id=<id>+<menu_id>")

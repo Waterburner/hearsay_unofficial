@@ -1,5 +1,4 @@
-from crypt import methods
-from urllib import response
+
 from flask import Flask, render_template, request, redirect, jsonify
 from flask_mysqldb import MySQL
 import yaml

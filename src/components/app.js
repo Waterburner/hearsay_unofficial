@@ -26,7 +26,7 @@ export default class App extends Component {
 
                             <Route path="/menus" component={Menus} />
 
-                            <Route path="/dinner" component={Dinner} />
+                            <Route path="/dinner_menu" component={Dinner} />
 
                             <Route component={NoMatch} />
                         </Switch>

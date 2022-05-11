@@ -25,7 +25,10 @@ def allMenus():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM menus")
     menusDetails = cur.fetchall()
-    return render_template('index.html', menusDetails=menusDetails)
+    # return render_template('index.html', menusDetails=menusDetails)
+    response = jsonify(menusDetails)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
     # returns: 
     # menusDetails[0] - id
     # menusDetails[1] - name of the menu

@@ -61,14 +61,14 @@ export default class Menus extends Component {
 
     backend_server = "http://localhost:5000/allmenus";
 
-    getMenus(backend_server) {
-        fetch()
+    getMenus() {
+        fetch(this.backend_server)
             .then((response) => response.json())
             .then((data) => console.log(data));
     }
 
     render() {
-        this.getMenus(this.backend_server);
+        this.getMenus();
         return <div>getMenus</div>;
     }
 }

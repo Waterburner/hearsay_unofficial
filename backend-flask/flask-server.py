@@ -147,10 +147,10 @@ def allItems():
         # allItems.append(newItems)
         allItems.append(cur.fetchall())
     # return render_template('allItems.html', allMenus=allMenus, allItems=allItems) 
-    response = []
-    response.append(allMenus)
-    response.append(allItems)
-    response = jsonify(response)
+    raw_response = []
+    raw_response.append(allMenus)
+    raw_response.append(allItems)
+    response = jsonify(raw_response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 

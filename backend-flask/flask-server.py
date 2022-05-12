@@ -1,4 +1,3 @@
-
 from urllib import response
 from flask import Flask, render_template, request, redirect, jsonify
 from flask_mysqldb import MySQL
@@ -134,7 +133,7 @@ def newItem():
         return redirect('/allitems')
     return render_template('newItem.html')
 
-@app.route(f"/allitems")
+@app.route(f"/allitems", methods=["GET"])
 def allItems():
     cur = mysql.connection.cursor()
     cur.execute("SELECT menus_actual_name FROM menus")

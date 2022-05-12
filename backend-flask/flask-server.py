@@ -1,4 +1,5 @@
 
+from urllib import response
 from flask import Flask, render_template, request, redirect, jsonify
 from flask_mysqldb import MySQL
 import yaml
@@ -145,7 +146,11 @@ def allItems():
         # newItems = cur.fetchall()
         # allItems.append(newItems)
         allItems.append(cur.fetchall())
-    return render_template('allItems.html', allMenus=allMenus, allItems=allItems) 
+    # return render_template('allItems.html', allMenus=allMenus, allItems=allItems) 
+    response = []
+    response.append(allMenus)
+    response.append(allItems)
+    return jsonify(response)
 
 
 

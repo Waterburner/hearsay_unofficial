@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import MenuItem from "./MenuItem";
 
 export default class AllMenuItems extends Component {
     constructor() {
@@ -22,14 +23,14 @@ export default class AllMenuItems extends Component {
                 console.log("getItems() fetch error", error);
             });
         // response
-        // template: [0- menus_name_actual, 1- menu-items, 1-0 - items from menus 0-0, 1-1 from 0-0 … 1-3 from 0-3…]
+        // template: [0- menus_name, 1- menu-items, 1-0 - items from menus 0-0, 1-1 from 0-0 … 1-3 from 0-3…]
         // [
         //     [
-        //         ["dinner_menu"],
-        //         ["brunch_menu"],
-        //         ["drink_menu"],
-        //         ["dessert_menu"],
-        //         ["appetizers_menu"],
+        //         ["dinner menu"],
+        //         ["brunch menu"],
+        //         ["drink menu"],
+        //         ["dessert menu"],
+        //         ["appetizers menu"],
         //     ],
         //     [
         //         [
@@ -108,24 +109,35 @@ export default class AllMenuItems extends Component {
         //         [],
         //     ],
         // ];
-        console.log(this.state.data);
+    }
+
+    listItems() {
+        var test = JSON.parse(this.state.data[0]);
+        console.log(test);
+        return <h1>{this.state.data[0]}</h1>;
+
+        // .map((data) => {
+        //     return (
+        //         <div>
+        //             <div className="choosen-menu-wrapper">
+        //                 <div className="choosen-menu">
+        //                     <div className="choosen-menu-title-wrapper">
+        //                         <h2 className="choosen-menu-title">
+        //                             {data}
+        //                         </h2>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     );
+        // });
     }
 
     render() {
-        if (this.state.isLoading) {
-            return <h3 className="loading">Loading…</h3>;
-        }
+        // if (this.state.isLoading) {
+        //     return <h3 className="loading">Loading…</h3>;
+        // }
 
-        return (
-            <div className="choosen-menu-wrapper">
-                <div className="choosen-menu">
-                    <div className="choosen-menu-title-wrapper">
-                        <h2 className="choosen-menu-title">Dinner menu</h2>
-                    </div>
-                    <h1>{this.state.data}</h1>
-                    {/* <MenuItem /> */}
-                </div>
-            </div>
-        );
+        return <div>{this.listItems()}</div>;
     }
 }

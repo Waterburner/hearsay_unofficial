@@ -6,7 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Homepage from "./homepage/Homepage";
 import Menus from "./menu/Menus.js";
-import AllMenuItems from "./menu/AllMenuItems";
+import AllMenuItems from "./menu/Allmenuitems";
 import Dinner from "./menu/Dinner";
 import NoMatch from "./NoMatch";
 
@@ -28,7 +28,7 @@ export default class App extends Component {
                             <Route path="/menus" component={Menus} />
 
                             <Route
-                                path="/allmenuitems"
+                                path="/all_menu_items"
                                 component={AllMenuItems}
                             />
 

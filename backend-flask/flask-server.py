@@ -150,6 +150,7 @@ def allItems():
     allMenuNames = cur.fetchall()
     raw_response = []
     raw_response.append(allMenuNames)
+    response = jsonify(raw_response)
     raw_response.append(allItems)
     response = jsonify(raw_response)
     response.headers.add('Access-Control-Allow-Origin', '*')

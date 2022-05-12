@@ -103,7 +103,7 @@ export default class Menus extends Component {
                         <ul className="menu-selection">
                             {this.listMenus()}
                             {this.state.isLoading == true ? null : (
-                                <NavLink to="everything">
+                                <NavLink to="all_menu_items">
                                     <li>all dishes</li>
                                 </NavLink>
                             )}

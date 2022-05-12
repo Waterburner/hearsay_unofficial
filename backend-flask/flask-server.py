@@ -150,7 +150,9 @@ def allItems():
     response = []
     response.append(allMenus)
     response.append(allItems)
-    return jsonify(response)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 

@@ -54,18 +54,22 @@ export default class Menus extends Component {
         this.state = {
             data: [],
             menus: [],
-            isLoading: true,
+            isLoading: false,
         };
         this.getMenus();
     }
-
+    // address to backend server (fetch data from DB)
     backend_server = "http://localhost:5000/allmenus";
 
     getMenus() {
         fetch(this.backend_server)
             .then((response) => response.json())
-            .then((data) => this.setState({ data: data }));
+            .then((data) => this.setState({ data: data }))
+            .catch((error) => {
+                console.log("getMenus() fetch error", error);
+            });
         // response
+        // template: [0- id, 1- menu_name, 2- menu_actual_name, 3- image mirror, 4- image mirror2, 5- 3d scan link]
         // 0 [1, "Dinner menu", "dinner_menu", "https://drive.google.com/drive/u/1/folders/1PPo7mxtq50rgDKTVTg3gtPWYFHzyPr4y", "https://imgbox.com/g/MB5BuqDEI2", null] (6)
         // 1 [2, "Brunch menu", "brunch_menu", null, null, null] (6)
         // 2 [3, "Drink menu", "drink_menu", null, null, null] (6)
@@ -74,13 +78,17 @@ export default class Menus extends Component {
     }
 
     listMenus() {
-        return this.state.data.map((data) => {
-            return (
-                <li>
-                    <NavLink to={data[2]}>{data[1]}</NavLink>
-                </li>
-            );
-        });
+        if (this.state.isLoading == true) {
+            return <li>still loading…</li>;
+        } else {
+            return this.state.data.map((data) => {
+                return (
+                    <li>
+                        <NavLink to={data[2]}>{data[1]}</NavLink>
+                    </li>
+                );
+            });
+        }
     }
 
     render() {
@@ -94,7 +102,11 @@ export default class Menus extends Component {
                     <div className="menu-selection-wrapper">
                         <ul className="menu-selection">
                             {this.listMenus()}
-                            <li>all dishes</li>
+                            {this.state.isLoading == true ? null : (
+                                <NavLink to="everything">
+                                    <li>all dishes</li>
+                                </NavLink>
+                            )}
                         </ul>
                     </div>
                 </div>

@@ -161,7 +161,7 @@ def allItems():
 
 # TO DO
 # each column saved in seperate array
-@app.route(f"/allitems_id", methods=["GET"])
+@app.route(f"/allitems_organized", methods=["GET"])
 def allItems_organized():
     cur = mysql.connection.cursor()
     cur.execute("SELECT menus_actual_name FROM menus")

@@ -10,6 +10,8 @@ export default class AllMenuItems extends Component {
             data: [],
         };
         this.getItems();
+
+        this.listItems = this.listItems.bind(this);
     }
 
     // address to backend server (fetch data from DB)
@@ -112,25 +114,40 @@ export default class AllMenuItems extends Component {
     }
 
     listItems() {
-        var test = JSON.parse(this.state.data[0]);
-        console.log(test);
-        return <h1>{this.state.data[0]}</h1>;
+        console.log(this.state.data);
+        return this.state.data.map((data) => {
+            return (
+                <div>
+                    <div className="choosen-menu-wrapper">
+                        <div className="choosen-menu">
+                            <div className="choosen-menu-title-wrapper">
+                                <h2 className="choosen-menu-title">
+                                    {/* {data} */}
+                                    MENU-TEST
+                                </h2>
+                            </div>
+                        </div>
+                        {/* ====================================== call component "MenuItem" ========================================== */}
 
-        // .map((data) => {
-        //     return (
-        //         <div>
-        //             <div className="choosen-menu-wrapper">
-        //                 <div className="choosen-menu">
-        //                     <div className="choosen-menu-title-wrapper">
-        //                         <h2 className="choosen-menu-title">
-        //                             {data}
-        //                         </h2>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     );
-        // });
+                        <div className="menu-item-wrapper">
+                            <div className="menu-item">
+                                <div>
+                                    <div className="menu-item-title-wrapper">
+                                        <h3 className="menu-item-title"></h3>
+                                    </div>
+                                    <div className="menu-item-description-wrapper">
+                                        <div className="menu-item-description">
+                                            Pan seared redfish …
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* ====================================== END OF call component "MenuItem" ========================================== */}
+                        </div>
+                    </div>
+                </div>
+            );
+        });
     }
 
     render() {
@@ -138,6 +155,10 @@ export default class AllMenuItems extends Component {
         //     return <h3 className="loading">Loading…</h3>;
         // }
 
-        return <div>{this.listItems()}</div>;
+        return (
+            <div>
+                <div>{this.listItems()}</div>
+            </div>
+        );
     }
 }

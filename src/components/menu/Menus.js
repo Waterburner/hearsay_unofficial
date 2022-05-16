@@ -140,6 +140,15 @@ export default class Menus extends Component {
                             </li>
                         </ul>
                     </div>
+                    <div className="menu-selection-wrapper">
+                        <ul className="menu-selection">
+                            <li>
+                                <NavLink to="/all_menu_items">
+                                    All dishes
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </div>
 
                     {/* auto generated menu list from DB */}
                     {/* <div className="menu-selection-wrapper">

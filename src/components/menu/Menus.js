@@ -76,22 +76,26 @@ export default class Menus extends Component {
         // 3 [4, "Dessert menu", "dessert_menu", null, null, null] (6)
         // 4 [5, "Appetizers menu", "appetizers_menu", null, null, null] (6)
     }
-
-    listMenus() {
-        if (this.state.isLoading == true) {
-            return <li>still loading…</li>;
-        } else {
-            return this.state.data.map((data) => {
-                return (
-                    <li>
-                        <NavLink to={data[2]}>{data[1]}</NavLink>
-                    </li>
-                );
-            });
-        }
-    }
+    // auto generated menu list from DB
+    // listMenus() {
+    //     if (this.state.isLoading == true) {
+    //         return <li>still loading…</li>;
+    //     } else {
+    //         return this.state.data.map((data) => {
+    //             return (
+    //                 <li>
+    //                     <NavLink to={data[2]}>{data[1]}</NavLink>
+    //                 </li>
+    //             );
+    //         });
+    //     }
+    // }
 
     render() {
+        if (this.state.isLoading == true) {
+            return <li>still loading…</li>;
+        }
+
         return (
             <div className="menus-wrapper">
                 <div className="menus">
@@ -101,6 +105,45 @@ export default class Menus extends Component {
 
                     <div className="menu-selection-wrapper">
                         <ul className="menu-selection">
+                            <li>
+                                <NavLink to="/drink_menu">Drinks</NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="menu-selection-wrapper">
+                        <ul className="menu-selection">
+                            <li>
+                                <NavLink to="/appetizer_menu">
+                                    Appetizers
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="menu-selection-wrapper">
+                        <ul className="menu-selection">
+                            <li>
+                                <NavLink to="/dinner_menu">Dinner</NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="menu-selection-wrapper">
+                        <ul className="menu-selection">
+                            <li>
+                                <NavLink to="/brunch_menu">Brunch</NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="menu-selection-wrapper">
+                        <ul className="menu-selection">
+                            <li>
+                                <NavLink to="/dessert_menu">Desserts</NavLink>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* auto generated menu list from DB */}
+                    {/* <div className="menu-selection-wrapper">
+                        <ul className="menu-selection">
                             {this.listMenus()}
                             {this.state.isLoading == true ? null : (
                                 <NavLink to="all_menu_items">
@@ -108,7 +151,7 @@ export default class Menus extends Component {
                                 </NavLink>
                             )}
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

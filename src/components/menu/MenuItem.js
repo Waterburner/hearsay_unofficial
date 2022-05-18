@@ -9,9 +9,6 @@ export default function () {
     // show all items (with description and pictures) from certain menu
     //  /menu_id=<id>
 
-    // show cetrain item only
-    //  /item_id=<id>+<menu_id>
-
     // show all items from all menus
     //  /allitems
 
@@ -23,6 +20,12 @@ export default function () {
     // useEffect(() => {
     //     fetch("/")
     // })
+
+    //================================================
+
+    // show cetrain item only
+    //  /item_id=<id>+<menu_id>
+    // ex: /item_id=2+1
 
     return (
         <div className="menu-item-wrapper">

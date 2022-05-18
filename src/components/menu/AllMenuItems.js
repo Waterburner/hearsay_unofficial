@@ -142,8 +142,8 @@ export default class AllMenuItems extends Component {
                                     </div>
                                 </div>
                             </div>
-                            {/* ====================================== END OF call component "MenuItem" ========================================== */}
                         </div>
+                        {/* ====================================== END OF call component "MenuItem" ========================================== */}
                     </div>
                 </div>
             );

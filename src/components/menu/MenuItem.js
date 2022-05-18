@@ -1,104 +1,107 @@
 import React, { Component, useState, useEffect } from "react";
 
-export default function () {
-    // localhost:5000/
+// localhost:5000/
 
-    // list of all menus
-    //  /allmenus
+// list of all menus
+//  /allmenus
 
-    // show all items (with description and pictures) from certain menu
-    //  /menu_id=<id>
+// show all items (with description and pictures) from certain menu
+//  /menu_id=<id>
 
-    // show all items from all menus
-    //  /allitems
+// show all items from all menus
+//  /allitems
 
-    // state:
-    //
+// state:
+//
 
-    // const [data, setData]  = useState([{}])
+// const [data, setData]  = useState([{}])
 
-    // useEffect(() => {
-    //     fetch("/")
-    // })
+// useEffect(() => {
+//     fetch("/")
+// })
 
-    //================================================
+//================================================
 
-    // show cetrain item only
-    //  /item_id=<id>+<menu_id>
-    // ex: /item_id=2+1
+// show cetrain item only
+//  /item_id=<id>+<menu_id>
+// ex: /item_id=2+1
 
-    return (
-        <div className="menu-item-wrapper">
-            <div className="menu-item">
-                <div>
-                    <div className="menu-item-title-wrapper">
-                        <h3 className="menu-item-title">
-                            Crab crusted redfish
-                        </h3>
-                    </div>
-                    <div className="menu-item-description-wrapper">
-                        <div className="menu-item-description">
-                            Pan seared redfish topped with crab crust
-                            (jumbo-lumb crab with bell peppers and a little bit
-                            of breading to hold it together) and finished in the
-                            oven to the perfection. Topped with creamy lemon
-                            butter sauce, served on the bed of red pepper sauce
-                            and garlic blistered green beans
+export default class MenuItem extends Component {
+    render() {
+        return (
+            <div className="menu-item-wrapper">
+                <div className="menu-item">
+                    <div>
+                        <div className="menu-item-title-wrapper">
+                            <h3 className="menu-item-title">
+                                Crab crusted redfish
+                            </h3>
+                        </div>
+                        <div className="menu-item-description-wrapper">
+                            <div className="menu-item-description">
+                                Pan seared redfish topped with crab crust
+                                (jumbo-lumb crab with bell peppers and a little
+                                bit of breading to hold it together) and
+                                finished in the oven to the perfection. Topped
+                                with creamy lemon butter sauce, served on the
+                                bed of red pepper sauce and garlic blistered
+                                green beans
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="menu-image-wrapper">
-                    <div className="menu-image">
-                        <div className="image">image goes here</div>
-                        <div className="scan">
-                            <div className="sketchfab-embed-wrapper">
-                                {" "}
-                                <iframe
-                                    title="Chocolate muse"
-                                    frameBorder="0"
-                                    allowFullScreen
-                                    mozallowfullscreen="true"
-                                    webkitallowfullscreen="true"
-                                    allow="autoplay; fullscreen; xr-spatial-tracking"
-                                    // xr-spatial-tracking
-                                    // execution-while-out-of-viewport
-                                    // execution-while-not-rendered
-                                    // web-share
-                                    src="https://sketchfab.com/models/6dcb75bc1082474781af82c561919f16/embed"
-                                >
+                    <div className="menu-image-wrapper">
+                        <div className="menu-image">
+                            <div className="image">image goes here</div>
+                            <div className="scan">
+                                <div className="sketchfab-embed-wrapper">
                                     {" "}
-                                </iframe>{" "}
-                                <p>
-                                    {" "}
-                                    <a
-                                        href="https://sketchfab.com/3d-models/chocolate-muse-6dcb75bc1082474781af82c561919f16?utm_medium=embed&utm_campaign=share-popup&utm_content=6dcb75bc1082474781af82c561919f16"
-                                        target="_blank"
+                                    <iframe
+                                        title="Chocolate muse"
+                                        frameBorder="0"
+                                        allowFullScreen
+                                        mozallowfullscreen="true"
+                                        webkitallowfullscreen="true"
+                                        allow="autoplay; fullscreen; xr-spatial-tracking"
+                                        // xr-spatial-tracking
+                                        // execution-while-out-of-viewport
+                                        // execution-while-not-rendered
+                                        // web-share
+                                        src="https://sketchfab.com/models/6dcb75bc1082474781af82c561919f16/embed"
                                     >
                                         {" "}
-                                        Chocolate muse{" "}
-                                    </a>{" "}
-                                    by{" "}
-                                    <a
-                                        href="https://sketchfab.com/oleg.kovelsky?utm_medium=embed&utm_campaign=share-popup&utm_content=6dcb75bc1082474781af82c561919f16"
-                                        target="_blank"
-                                    >
+                                    </iframe>{" "}
+                                    <p>
                                         {" "}
-                                        oleg.kovelsky{" "}
-                                    </a>{" "}
-                                    on{" "}
-                                    <a
-                                        href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=6dcb75bc1082474781af82c561919f16"
-                                        target="_blank"
-                                    >
-                                        Sketchfab
-                                    </a>
-                                </p>
+                                        <a
+                                            href="https://sketchfab.com/3d-models/chocolate-muse-6dcb75bc1082474781af82c561919f16?utm_medium=embed&utm_campaign=share-popup&utm_content=6dcb75bc1082474781af82c561919f16"
+                                            target="_blank"
+                                        >
+                                            {" "}
+                                            Chocolate muse{" "}
+                                        </a>{" "}
+                                        by{" "}
+                                        <a
+                                            href="https://sketchfab.com/oleg.kovelsky?utm_medium=embed&utm_campaign=share-popup&utm_content=6dcb75bc1082474781af82c561919f16"
+                                            target="_blank"
+                                        >
+                                            {" "}
+                                            oleg.kovelsky{" "}
+                                        </a>{" "}
+                                        on{" "}
+                                        <a
+                                            href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=6dcb75bc1082474781af82c561919f16"
+                                            target="_blank"
+                                        >
+                                            Sketchfab
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }

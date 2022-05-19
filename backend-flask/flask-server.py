@@ -176,13 +176,9 @@ def allItems_organized():
     # json response
     api_response = []
 
-    allMenusID = []
-    allMenusNames = []
     itemsID = []
     cur.execute("SELECT menus_id FROM menus")
     allMenusID = cur.fetchall()
-    cur.execute("SELECT menus_name FROM menus")
-    allMenusNames = cur.fetchall()
     cur.execute("SELECT menus_actual_name FROM menus")
     allMenus_actual_name = cur.fetchall()
     allMenusID_allItems = []
@@ -194,14 +190,12 @@ def allItems_organized():
         itemsID.append(items)
     allMenusID_allItems.append(itemsID)
     allItems_organized = allMenusID_allItems
-    allItems_organized.append(allMenusNames)
     api_response = jsonify(allItems_organized)
     api_response.headers.add('Access-Control-Allow-Origin', '*')
     return api_response 
     # response{
     #   [0][menusID],
     #   [1][menusID][itemsID],
-    #   [2][menu_name]
     # }
 
 

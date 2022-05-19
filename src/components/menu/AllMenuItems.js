@@ -10,33 +10,37 @@ export default class AllMenuItems extends Component {
             data: [],
         };
         this.getItems();
-
-        this.listItems = this.listItems.bind(this);
     }
 
     // address to backend server (fetch data from DB)
-    backend_server = "http://localhost:5000/allitems";
+    backend_server_items = "http://localhost:5000/allitems";
+    backend_server_menus = "http://localhost:5000/allmenus";
 
     getItems() {
-        fetch(this.backend_server)
+        fetch(this.backend_server_items)
             .then((response) => response.json())
             .then((data) => this.setState({ data: data }))
-            .then(console.log(this.state.data))
+            .then(console.log("current state", this.state))
             .catch((error) => {
-                console.log("getItems() fetch error", error);
+                console.log("getItems() items fetch error", error);
             });
+        // fetch(this.backend_server_menus)
+        //     .then((response) => response.json())
+        //     .then((data) => this.setState({ menus: data }))
+        //     .catch((error) => {
+        //         console.log("getItems() menus fetch error", error);
+        //     });
         // # response{
         // #   [0][menusID],
         // #   [1][menusID][itemsID],
-        // #   [2][menu_name]
         // # }
     }
 
     listItems() {
-        console.log(this.state.data);
-        return this.state.data.map((item) => {
-            return <p>{item}</p>;
-        });
+        console.log(this.state);
+        // return this.state.menus.map((menu) => {
+        //     return <p>{menu}</p>;
+        // });
     }
 
     render() {

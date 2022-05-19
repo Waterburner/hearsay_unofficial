@@ -159,61 +159,54 @@ def allItems():
 
 # in progress
 
-# TO DO
-# each column saved in seperate array
-# @app.route(f"/allitems_organized", methods=["GET"])
-# def allItems_organized():
-#     cur = mysql.connection.cursor()
-#     cur.execute("SELECT menus_actual_name FROM menus")
-#     allMenus = cur.fetchall()
-#     # for loop to go thrugh allMenus and save all items in allItems
-#     allItems_organized = []
-#     for menu in allMenus:
-#         cur.execute(f"SELECT * FROM {menu[0]}")
-#         # newItems = cur.fetchall()
-#         # allItems.append(newItems)
-#         allItems_organized.append(cur.fetchall())
-#     # return render_template('allItems.html', allMenus=allMenus, allItems=allItems) 
-#     cur.execute("SELECT menus_name from menus")
-#     allMenuNames = cur.fetchall()
-#     raw_response = []
-#     # raw_response.append(allMenuNames)
-#     # response = jsonify(raw_response)
-#     raw_response.append(allItems)
-#     response = jsonify(raw_response)
-#     response.headers.add('Access-Control-Allow-Origin', '*')
-#     return response
-
-@app.route("/allitems_organized", methods=["GET"])
-def allItems_organized():
-    cur = mysql.connection.cursor()
-    allItems_organized = []
-    allMenusID = []
-    allMenusNames = []
-    allItemsID = []
-    api_response = []
-    cur.execute("SELECT menus_id FROM menus")
-    allMenusID = cur.fetchall()
-    cur.execute("SELECT menus_name FROM menus")
-    allMenusNames = cur.fetchall()
-    cur.execute("SELECT menus_actual_name FROM menus")
-    allMenus_actual_name = cur.fetchall()
-    # for loop to go thrugh allMenus and save all items in allItems
-    for menu in allMenus_actual_name:
-        cur.execute(f"SELECT {menu[0]}_id FROM {menu[0]}")
-        newItemID = cur.fetchall()
-        allItemsID.append(newItemID)
-    allItems_organized.append(allMenusID)
-    allItems_organized.append(allMenusNames)
-    allItems_organized.append(allItemsID)
-    api_response = jsonify(allItems_organized)
-    api_response.headers.add('Access-Control-Allow-Origin', '*')
-    return api_response 
-
-
 
 
 # end of in progress
+
+
+# response{
+#   [0][menusID],
+#   [1][menusID][itemsID],
+#   [2][menu_name]
+# }
+@app.route("/allitems_organized", methods=["GET"])
+def allItems_organized():
+    cur = mysql.connection.cursor()
+    # final response
+    allItems_organized = [] 
+
+    # json response
+    api_response = []
+
+    allMenusID = []
+    allMenusNames = []
+    allItemsID = []
+    cur.execute("SELECT menus_id FROM menus")
+    allMenusID = cur.fetchall()
+    
+    cur.execute("SELECT menus_name FROM menus")
+    allMenusNames = cur.fetchall()
+
+    cur.execute("SELECT menus_actual_name FROM menus")
+    allMenus_actual_name = cur.fetchall()
+
+    allMenusID_allItems = []
+    allMenusID_allItems.append(allMenusID)
+
+    # all menu items in one array
+    allItems = []
+
+    for id, menuID in enumerate(allMenusID):
+        cur.execute(f"SELECT {allMenus_actual_name[id][0]}_id FROM {allMenus_actual_name[id][0]}")
+        items = cur.fetchall()
+        allItems.append(items)
+
+    allMenusID_allItems.append(allItems)
+    allItems_organized = allMenusID_allItems
+    allItems_organized.append(allMenusNames)
+    api_response = jsonify(allItems_organized)
+    api_response.headers.add('Access-Control-Allow-Origin', '*')
+    return api_response 
 
 
 # =================== testing ==================

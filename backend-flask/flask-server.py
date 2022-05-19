@@ -19,21 +19,6 @@ def home():
     greeting = "<h1>Hearsay API </h1>"
     return greeting
 
-#get all menus
-@app.route("/allmenus")
-def allMenus():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM menus")
-    menusDetails = cur.fetchall()
-    # return render_template('index.html', menusDetails=menusDetails)
-    response = jsonify(menusDetails)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
-    # returns: 
-    # menusDetails[0] - id
-    # menusDetails[1] - name of the menu
-
-
 # get certain menu
 # @app.route(f"/menu_id=<id>")
 # def certainMenu(id):
@@ -172,6 +157,15 @@ def certainMenu(id):
     # }
 
 
+
+@app.route("/allmenus", methods=["GET"])
+def allMenus():
+    cur = mysql.connection.cursor()
+    api_response = []
+    cur.execute("SELECT menus_name FROM menus")
+    api_response = jsonify(cur.fetchall())
+    api_response.headers.add('Access-Control-Allow-Origin', '*')
+    return api_response
 
 @app.route("/allitems", methods=["GET"])
 def allItems_organized():

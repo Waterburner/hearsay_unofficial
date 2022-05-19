@@ -20,7 +20,7 @@ export default class AllMenuItems extends Component {
     getItems() {
         fetch(this.backend_server)
             .then((response) => response.json())
-            .then((data) => this.setState({ data: data[2] }))
+            .then((data) => this.setState({ data: data }))
             .then(console.log(this.state.data))
             .catch((error) => {
                 console.log("getItems() fetch error", error);

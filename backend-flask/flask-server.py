@@ -123,12 +123,12 @@ def newItem():
         return redirect('/allitems')
     return render_template('newItem.html')
 
-# in progress
+
+# ================== in progress
 
 
 
-
-# end of in progress
+# ================== end of in progress
 
 # executing db queries
 def executeDBQuery(choosenMenu_actual, col_name):

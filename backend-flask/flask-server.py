@@ -184,7 +184,7 @@ def allItems():
 #     response.headers.add('Access-Control-Allow-Origin', '*')
 #     return response
 
-@app.route(f"/allitems_organized", methods=["GET"])
+@app.route("/allitems_organized", methods=["GET"])
 def allItems_organized():
     cur = mysql.connection.cursor()
     allItems_organized = []

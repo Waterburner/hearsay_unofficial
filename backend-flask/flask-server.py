@@ -35,7 +35,7 @@ def allMenus():
 
 
 # get certain menu
-@app.route(f"/menu_id=<id>")
+# @app.route(f"/menu_id=<id>")
 # def certainMenu(id):
 #     cur = mysql.connection.cursor()
 #     cur.execute(f"SELECT * FROM menus WHERE menus_id={id}") # menu_id is variable
@@ -45,17 +45,7 @@ def allMenus():
 #     cur.execute(f"SELECT * FROM {menuName}")
 #     menuItems = cur.fetchall()
 #     return render_template('certainMenu.html', menusDetails=menusDetails, menuItems=menuItems) 
-def certainMenu(id):
-    cur = mysql.connection.cursor()
-    cur.execute(f"SELECT menus_name FROM menus WHERE menus_id={id}") # menu_id is variable
-    choosenMenu = cur.fetchall()
-    cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={id}")
-    menuName = cur.fetchall()[0][0]
-    cur.execute(f"SELECT * FROM {menuName}")
-    menuItems = cur.fetchall()
 
-    response = choosenMenu+menuItems
-    return jsonify(response) 
 
 # get certain item
 @app.route(f"/item_id=<id>+<menu_id>")
@@ -133,43 +123,54 @@ def newItem():
         return redirect('/allitems')
     return render_template('newItem.html')
 
-@app.route(f"/allitems", methods=["GET"])
-def allItems():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT menus_actual_name FROM menus")
-    allMenus = cur.fetchall()
-    # for loop to go thrugh allMenus and save all items in allItems
-    allItems = []
-    for menu in allMenus:
-        cur.execute(f"SELECT * FROM {menu[0]}")
-        # newItems = cur.fetchall()
-        # allItems.append(newItems)
-        allItems.append(cur.fetchall())
-    # return render_template('allItems.html', allMenus=allMenus, allItems=allItems) 
-    cur.execute("SELECT menus_name from menus")
-    allMenuNames = cur.fetchall()
-    raw_response = []
-    # raw_response.append(allMenuNames)
-    # response = jsonify(raw_response)
-    raw_response.append(allItems)
-    response = jsonify(raw_response)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
-
-
 # in progress
+
 
 
 
 # end of in progress
 
+# executing db queries
+def executeDBQuery(choosenMenu_actual, col_name):
+    cur = mysql.connection.cursor()
+    cur.execute(f"SELECT {choosenMenu_actual}_{col_name} FROM {choosenMenu_actual}")
+    data = cur.fetchall()
+    return data
 
-# response{
-#   [0][menusID],
-#   [1][menusID][itemsID],
-#   [2][menu_name]
-# }
-@app.route("/allitems_organized", methods=["GET"])
+@app.route(f"/menu_id=<id>")
+def certainMenu(id):
+    cur = mysql.connection.cursor()
+    response = []
+    response.append(id)
+    cur.execute(f"SELECT menus_name FROM menus WHERE menus_id={id}") # menu_id is variable
+    choosenMenu = cur.fetchall()
+    response.append(choosenMenu)
+    cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={id}")
+    choosenMenu_actual = cur.fetchall()[0][0]
+    cur.execute(f"SELECT * FROM {choosenMenu_actual}")
+
+    response.append(executeDBQuery(choosenMenu_actual, "id"))
+    response.append(executeDBQuery(choosenMenu_actual, "name"))
+    response.append(executeDBQuery(choosenMenu_actual, "description"))
+    response.append(executeDBQuery(choosenMenu_actual, "link"))
+    response.append(executeDBQuery(choosenMenu_actual, "scanLink"))
+    response.append(executeDBQuery(choosenMenu_actual, "belongs_to_id"))
+    api_response = jsonify(response[3])
+    return api_response
+    # response{
+    #   [0][id] // id of the menu you chose
+    #   [1][choosenMenu]   // name of the menu you chose
+    #   [2][item ID]   // ID of the items in the choisen menu
+    #   [3][item name] // name of the item in the choosen menu
+    #   [4][item description] // description of the item in the choosen menu
+    #   [5][item link] // link to img of the item in the choosen menu
+    #   [6][item scanLink] // link to 3d scan of the item in the choosen menu
+    #   [7][belongs_to_id] // id of the menu to which one item belongs (same as choosen menu)
+    # }
+
+
+
+@app.route("/allitems", methods=["GET"])
 def allItems_organized():
     cur = mysql.connection.cursor()
     # final response
@@ -180,33 +181,31 @@ def allItems_organized():
 
     allMenusID = []
     allMenusNames = []
-    allItemsID = []
+    itemsID = []
     cur.execute("SELECT menus_id FROM menus")
     allMenusID = cur.fetchall()
-    
     cur.execute("SELECT menus_name FROM menus")
     allMenusNames = cur.fetchall()
-
     cur.execute("SELECT menus_actual_name FROM menus")
     allMenus_actual_name = cur.fetchall()
-
     allMenusID_allItems = []
     allMenusID_allItems.append(allMenusID)
-
     # all menu items in one array
-    allItems = []
-
     for id, menuID in enumerate(allMenusID):
         cur.execute(f"SELECT {allMenus_actual_name[id][0]}_id FROM {allMenus_actual_name[id][0]}")
         items = cur.fetchall()
-        allItems.append(items)
-
-    allMenusID_allItems.append(allItems)
+        itemsID.append(items)
+    allMenusID_allItems.append(itemsID)
     allItems_organized = allMenusID_allItems
     allItems_organized.append(allMenusNames)
     api_response = jsonify(allItems_organized)
     api_response.headers.add('Access-Control-Allow-Origin', '*')
     return api_response 
+    # response{
+    #   [0][menusID],
+    #   [1][menusID][itemsID],
+    #   [2][menu_name]
+    # }
 
 
 # =================== testing ==================

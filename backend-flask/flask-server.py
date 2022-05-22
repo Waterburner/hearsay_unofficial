@@ -161,9 +161,14 @@ def certainMenu(id):
 @app.route("/allmenus", methods=["GET"])
 def allMenus():
     cur = mysql.connection.cursor()
+    menu_list = []
     api_response = []
     cur.execute("SELECT menus_name FROM menus")
-    api_response = jsonify(cur.fetchall())
+    menu_list.append(cur.fetchall())
+
+    api_response = jsonify(menu_list)
+
+    # api_response
     api_response.headers.add('Access-Control-Allow-Origin', '*')
     return api_response
 

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// import MenuItem from "./MenuItem";
+import MenuItem from "./MenuItem";
 
 export default class AllMenuItems extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             isLoading: false,
@@ -57,6 +57,8 @@ export default class AllMenuItems extends Component {
                             return data[index].map((data) => {
                                 // return <p>{data}</p>; returns menu item ids from current menu
                                 // TODO: call component MenuItem with this props of returning item_id=data and menu_id=index
+
+                                <MenuItem menu_id={index} item_id={data} />;
                             });
                         })}
                     </div>
@@ -75,6 +77,11 @@ export default class AllMenuItems extends Component {
         //     return <h3 className="loading">Loading…</h3>;
         // }
 
-        return this.listItems();
+        return (
+            <div>
+                {this.listItems()}
+                <MenuItem />
+            </div>
+        );
     }
 }

@@ -1,3 +1,4 @@
+import json
 from urllib import response
 from flask import Flask, render_template, request, redirect, jsonify
 from flask_mysqldb import MySQL
@@ -40,7 +41,10 @@ def certainItem(id, menu_id):
     targetMenu = cur.fetchall()[0][0]
     cur.execute(f"SELECT * FROM {targetMenu} WHERE {targetMenu}_id={id}")
     item = cur.fetchall()
-    return render_template('menuItem.html', item=item) 
+    # return render_template('menuItem.html', item=item) 
+    response = jsonify(item)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 # =====================================================================
     # NOT WORKING :(

@@ -187,7 +187,7 @@ def allItems_organized():
     cur.execute("SELECT menus_actual_name FROM menus")
     allMenus_actual_name = cur.fetchall()
     allMenusID_allItems = []
-    allMenusID_allItems.append(allMenusID)
+    # allMenusID_allItems.append(allMenusID)
     # all menu items in one array
     for id, menuID in enumerate(allMenusID):
         cur.execute(f"SELECT {allMenus_actual_name[id][0]}_id FROM {allMenus_actual_name[id][0]}")

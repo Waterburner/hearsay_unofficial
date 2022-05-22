@@ -39,7 +39,7 @@ export default class AllMenuItems extends Component {
     listItems() {
         // list menus
         return this.state.menus.map((menu) => {
-            return menu.map((item) => {
+            return menu.map((item, index) => {
                 return (
                     <div className="menu-item">
                         <div className="menus-wrapper">
@@ -53,6 +53,12 @@ export default class AllMenuItems extends Component {
                                 </div>
                             </div>
                         </div>
+                        {this.state.data.map((data) => {
+                            return data[index].map((data) => {
+                                // return <p>{data}</p>; returns menu item ids from current menu
+                                // TODO: call component MenuItem with this props of returning item_id=data and menu_id=index
+                            });
+                        })}
                     </div>
                 );
             });

@@ -197,8 +197,9 @@ def allitems_detailed():
         cur.execute(f"SELECT {each_menu[0]}_scanLink from {each_menu[0]}")
         tmp.append(cur.fetchall())
         allItems.append(tmp)
-    api_response=allItems[0]
-    return jsonify(api_response)  
+    api_response=jsonify(allItems[0])
+    api_response.headers.add('Access-Control-Allow-Origin', '*')
+    return api_response
 
 
 @app.route("/allitems", methods=["GET"])

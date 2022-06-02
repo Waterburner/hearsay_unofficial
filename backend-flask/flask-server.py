@@ -176,6 +176,31 @@ def allMenus():
     api_response.headers.add('Access-Control-Allow-Origin', '*')
     return api_response
 
+# response with name, description, img link and 3d scan link
+@app.route("/allitems_detailed", methods=["GET"])
+def allitems_detailed():
+    cur = mysql.connection.cursor()
+    tmp = []
+    allItems=[]
+    api_response = []
+    cur.execute("SELECT menus_actual_name FROM menus")
+    allMenus_actual_name=cur.fetchall()
+    cur.execute("SELECT menus_name FROM menus")
+    for each_menu in allMenus_actual_name:
+        tmp = []
+        cur.execute(f"SELECT {each_menu[0]}_name from {each_menu[0]}")
+        tmp.append(cur.fetchall())
+        cur.execute(f"SELECT {each_menu[0]}_description from {each_menu[0]}")
+        tmp.append(cur.fetchall())
+        cur.execute(f"SELECT {each_menu[0]}_link from {each_menu[0]}")
+        tmp.append(cur.fetchall())
+        cur.execute(f"SELECT {each_menu[0]}_scanLink from {each_menu[0]}")
+        tmp.append(cur.fetchall())
+        allItems.append(tmp)
+    api_response=allItems[0]
+    return jsonify(api_response)  
+
+
 @app.route("/allitems", methods=["GET"])
 def allItems_organized():
     cur = mysql.connection.cursor()

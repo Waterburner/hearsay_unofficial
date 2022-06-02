@@ -32,27 +32,26 @@ export default class MenuItem extends Component {
 
         this.state = {
             isLoading: false,
-            // item_id: this.props.item_id,
-            // menu_id: this.props.menu_id,
-            item_id: 1,
-            menu_id: 1,
+            // item_name: "",
+            // item_description: "",
+            // item_img_link: "",
+            // item_scan_link: "",
+            menuItemClass: "",
         };
-        this.getItem(this.state.menu_id, this.state.item_id);
     }
 
-    backend_server = "http://localhost:5000/item_id";
+    // backend_server = "http://localhost:5000/item_id";
 
-    getItem(menu_id, item_id) {
-        fetch(`${this.backend_server}=${item_id}+${menu_id}`)
-            .then((response) => response.json())
-            .then((data) => this.setState({ data }))
-            .catch((error) => {
-                console.log("getItem() fetch error", error);
-            });
-    }
+    // getItem(menu_id, item_id) {
+    //     fetch(`${this.backend_server}=${item_id}+${menu_id}`)
+    //         .then((response) => response.json())
+    //         .then((data) => this.setState({ data }))
+    //         .catch((error) => {
+    //             console.log("getItem() MenuItem.js fetch error", error);
+    //         });
+    // }
 
     listItem() {
-        console.log("menuitem- ", this.state.data);
         return (
             <div>
                 <h1>{this.state.data}</h1>
@@ -61,83 +60,39 @@ export default class MenuItem extends Component {
     }
 
     render() {
-        console.log(this.state.data);
-        return <div>{this.listItem()}</div>;
+        const item_name = this.props.item_name;
+        const item_des = this.props.item_description;
+        const item_img_link = this.props.item_img_link;
+        const item_scan_link = this.props.item_scan_link;
+
+        return (
+            <div className="menu-item-wrapper">
+                <div className="menu-item">
+                    <div>
+                        <div className="menu-item-title-wrapper">
+                            <h3 className="menu-item-title">{item_name}</h3>
+                        </div>
+                        <div className="menu-item-description-wrapper">
+                            <div className="menu-item-description">
+                                {item_des}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="menu-image-wrapper">
+                        <div className="menu-image">
+                            <div className="image">
+                                <img href={item_img_link}></img>
+                            </div>
+                            <div className="scan">
+                                <div className="sketchfab-embed-wrapper">
+                                    {item_scan_link}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     }
 }
-
-// (
-//    <div className="menu-item-wrapper">
-//     <div className="menu-item">
-//         <div>
-//             <div className="menu-item-title-wrapper">
-//                 <h3 className="menu-item-title">
-//                     Crab crusted redfish
-//                 </h3>
-//             </div>
-//             <div className="menu-item-description-wrapper">
-//                 <div className="menu-item-description">
-//                     Pan seared redfish topped with crab crust
-//                     (jumbo-lumb crab with bell peppers and a little
-//                     bit of breading to hold it together) and
-//                     finished in the oven to the perfection. Topped
-//                     with creamy lemon butter sauce, served on the
-//                     bed of red pepper sauce and garlic blistered
-//                     green beans
-//                 </div>
-//             </div>
-//         </div>
-
-//         <div className="menu-image-wrapper">
-//             <div className="menu-image">
-//                 <div className="image">image goes here</div>
-//                 <div className="scan">
-//                     <div className="sketchfab-embed-wrapper">
-//                         {" "}
-//                         <iframe
-//                             title="Chocolate muse"
-//                             frameBorder="0"
-//                             allowFullScreen
-//                             mozallowfullscreen="true"
-//                             webkitallowfullscreen="true"
-//                             allow="autoplay; fullscreen; xr-spatial-tracking"
-//                             // xr-spatial-tracking
-//                             // execution-while-out-of-viewport
-//                             // execution-while-not-rendered
-//                             // web-share
-//                             src="https://sketchfab.com/models/6dcb75bc1082474781af82c561919f16/embed"
-//                         >
-//                             {" "}
-//                         </iframe>{" "}
-//                         <p>
-//                             {" "}
-//                             <a
-//                                 href="https://sketchfab.com/3d-models/chocolate-muse-6dcb75bc1082474781af82c561919f16?utm_medium=embed&utm_campaign=share-popup&utm_content=6dcb75bc1082474781af82c561919f16"
-//                                 target="_blank"
-//                             >
-//                                 {" "}
-//                                 Chocolate muse{" "}
-//                             </a>{" "}
-//                             by{" "}
-//                             <a
-//                                 href="https://sketchfab.com/oleg.kovelsky?utm_medium=embed&utm_campaign=share-popup&utm_content=6dcb75bc1082474781af82c561919f16"
-//                                 target="_blank"
-//                             >
-//                                 {" "}
-//                                 oleg.kovelsky{" "}
-//                             </a>{" "}
-//                             on{" "}
-//                             <a
-//                                 href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=6dcb75bc1082474781af82c561919f16"
-//                                 target="_blank"
-//                             >
-//                                 Sketchfab
-//                             </a>
-//                         </p>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-// </div>
-// )

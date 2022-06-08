@@ -69,42 +69,25 @@ export default class AllMenuItems extends Component {
     }
 
     listItems() {
-        this.setState({
-            data: { item_names: this.state.data.response },
-        });
-
-        const data = this.state.data;
-        let item_names = [];
-        item_names.push(this.state.data.response);
-        let item_description = this.state.data[1];
-        let item_img_link = this.state.data[2];
-        let item_scan_link = this.state.data[3];
-        let item_quantity = 0;
-        console.log(this.state.data.item_names);
-        // return <p>{this.state.data.item_names}</p>;
-        // return item_names.map((item, count) => {
-        //     return (
-        //         <div>
-        //             <h3>{count}</h3>
-        //             <p>{item}</p>
-        //         </div>
-        //     );
-        // });
+        const { data } = this.state;
+        return (
+            data.response.length > 0 &&
+            data.response[0].map((item_name, count) => {
+                return (
+                    <MenuItem
+                        item_name={item_name}
+                        item_description={this.state.data.response[1][count]}
+                        item_link={this.state.data.response[2][count]}
+                    />
+                );
+            })
+        );
     }
 
     render() {
         // if (this.state.isLoading) {
         //     return <h3 className="loading">Loading…</h3>;
         // }
-        return (
-            <div>
-                <MenuItem
-                    item_name="test"
-                    item_description="haha"
-                    item_img_link=""
-                    item_scan_link=""
-                />
-            </div>
-        );
+        return <div>{this.listItems()}</div>;
     }
 }

@@ -51,19 +51,11 @@ export default class MenuItem extends Component {
     //         });
     // }
 
-    listItem() {
-        return (
-            <div>
-                <h1>{this.state.data}</h1>
-            </div>
-        );
-    }
-
     render() {
         const item_name = this.props.item_name;
         const item_des = this.props.item_description;
         const item_img_link = this.props.item_img_link;
-        const item_scan_link = this.props.item_scan_link;
+        // const item_scan_link = this.props.item_scan_link;
 
         return (
             <div className="menu-item-wrapper">
@@ -86,7 +78,7 @@ export default class MenuItem extends Component {
                             </div>
                             <div className="scan">
                                 <div className="sketchfab-embed-wrapper">
-                                    {item_scan_link}
+                                    {/* {item_scan_link} */}
                                 </div>
                             </div>
                         </div>

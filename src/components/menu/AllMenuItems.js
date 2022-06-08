@@ -77,7 +77,7 @@ export default class AllMenuItems extends Component {
                     <MenuItem
                         item_name={item_name}
                         item_description={this.state.data.response[1][count]}
-                        item_link={this.state.data.response[2][count]}
+                        item_img_link={this.state.data.response[2][count]}
                     />
                 );
             })

@@ -64,9 +64,7 @@ export default class MenuItem extends Component {
                 <div className="menu-item">
                     <div>
                         <div className="menu-item-title-wrapper">
-                            <h3 className="menu-item-title">
-                                Name: {item_name}
-                            </h3>
+                            <h3 className="menu-item-title">{item_name}</h3>
                         </div>
                         <div className="menu-item-description-wrapper">
                             <div className="menu-item-description">
@@ -77,12 +75,12 @@ export default class MenuItem extends Component {
 
                     <div className="menu-image-wrapper">
                         <div className="menu-image">
-                            <div className="image">
-                                <img
-                                    src={item_img_link}
-                                    alt="food image goes here"
-                                />
-                            </div>
+                            <img
+                                className="image"
+                                src={item_img_link}
+                                alt="food image goes here"
+                            />
+
                             <div className="scan">
                                 <div className="sketchfab-embed-wrapper">
                                     {/* {item_scan_link} */}

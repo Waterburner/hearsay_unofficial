@@ -211,14 +211,15 @@ a {
         }
 
         .menu-image-wrapper {
-            width: 100%;
-
             .menu-image {
-                width: 100%;
+                display: flex;
+                // justify-content: space-around;
+                justify-content: center;
                 .image {
-                    width: 100%;
+                    text-align: center;
+                    width: 40vw;
                     // background-color: gray;
-                    height: 300px;
+                    height: auto;
                 }
             }
             .sketchfab-embed-wrapper {

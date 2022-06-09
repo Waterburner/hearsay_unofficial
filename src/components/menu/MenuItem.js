@@ -55,6 +55,8 @@ export default class MenuItem extends Component {
         const item_name = this.props.item_name;
         const item_des = this.props.item_description;
         const item_img_link = this.props.item_img_link;
+        console.log(item_name, item_img_link);
+
         // const item_scan_link = this.props.item_scan_link;
 
         return (
@@ -62,7 +64,9 @@ export default class MenuItem extends Component {
                 <div className="menu-item">
                     <div>
                         <div className="menu-item-title-wrapper">
-                            <h3 className="menu-item-title">{item_name}</h3>
+                            <h3 className="menu-item-title">
+                                Name: {item_name}
+                            </h3>
                         </div>
                         <div className="menu-item-description-wrapper">
                             <div className="menu-item-description">
@@ -74,7 +78,10 @@ export default class MenuItem extends Component {
                     <div className="menu-image-wrapper">
                         <div className="menu-image">
                             <div className="image">
-                                <img href={item_img_link}></img>
+                                <img
+                                    src={item_img_link}
+                                    alt="food image goes here"
+                                />
                             </div>
                             <div className="scan">
                                 <div className="sketchfab-embed-wrapper">

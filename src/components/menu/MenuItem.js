@@ -80,11 +80,11 @@ export default class MenuItem extends Component {
                                 alt="food image goes here"
                             />
 
-                            <div className="scan">
+                            {/* <div className="scan">
                                 <div className="sketchfab-embed-wrapper">
-                                    {/* {item_scan_link} */}
+                                    
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

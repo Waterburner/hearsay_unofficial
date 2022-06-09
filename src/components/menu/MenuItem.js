@@ -60,7 +60,7 @@ export default class MenuItem extends Component {
         // const item_scan_link = this.props.item_scan_link;
 
         return (
-            <div className="menu-item-wrapper">
+            <div className="menu-item-component-wrapper">
                 <div className="menu-item">
                     <div>
                         <div className="menu-item-title-wrapper">

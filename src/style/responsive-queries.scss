@@ -1,5 +1,10 @@
+// desktop styles
+
 // header
 @media only screen and (min-width: 768px) {
+    .app-wrapper {
+        min-width: 95vw;
+    }
     .header {
         .header-wrapper {
             display: flex;
@@ -37,23 +42,25 @@
 // end of header
 
 @media only screen and (min-width: 768px) {
-    .choosen-menu-wrapper {
-        .choosen-menu {
-            .menu-item-wrapper {
-                .menu-item {
+    .menu-item-component-wrapper {
+        .menu-item {
+            display: grid;
+            grid-template-columns: 4fr 3fr;
+            gap: 5px;
+
+            .menu-item-title {
+                text-align: left;
+            }
+
+            .menu-image-wrapper {
+                .menu-image {
                     display: grid;
-                    grid-template-columns: 4fr 3fr;
-                    gap: 5px;
+                    grid-template-columns: 1fr 1fr;
 
-                    .menu-item-title {
-                        text-align: left;
-                    }
-
-                    .menu-image-wrapper {
-                        .menu-image {
-                            display: grid;
-                            grid-template-columns: 1fr 1fr;
-                        }
+                    .image,
+                    .scan {
+                        width: 25vw;
+                        max-height: 35vw;
                     }
                 }
             }

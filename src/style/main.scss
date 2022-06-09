@@ -36,24 +36,27 @@ a {
     text-decoration: none;
     color: black;
 }
+.app-wrapper {
+    min-width: 90vw;
+    .app {
+        display: grid;
+        justify-items: center;
+        // background-color: red;
 
-.app {
-    display: grid;
-    justify-items: center;
-    // background-color: red;
-
-    .app-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 10px;
-        min-height: 95vh;
+        .app-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            min-height: 95vh;
+        }
     }
 }
 
 // ============= HEADER ==============
 
 .header {
+    max-width: 99vw;
     .header-wrapper {
         .header-logo {
             text-align: center;
@@ -67,7 +70,7 @@ a {
             display: flex;
             flex-direction: column;
             .burger-menu {
-                // visibility: hidden;
+                max-width: 95vw;
                 display: none;
                 position: absolute;
                 z-index: 12;
@@ -77,13 +80,13 @@ a {
 
                 background-color: whitesmoke;
 
-                .menu-item-navigation-choice {
-                    background-color: $offwhite;
-                    color: $hearsay-maroon;
-                }
-
                 .menu-item-wrapper {
                     border: 1px black solid;
+
+                    .menu-item-navigation-choice {
+                        background-color: $offwhite;
+                        color: $hearsay-maroon;
+                    }
 
                     .menu-item:hover {
                         color: $hearsay-maroon;
@@ -190,7 +193,7 @@ a {
 // ================ END OF CHOOSEN MENU =================
 
 // ================ MENUITEM =================
-.menu-item-wrapper {
+.menu-item-component-wrapper {
     .menu-item {
         .menu-title-wrapper {
             .menu-title {
@@ -216,8 +219,7 @@ a {
                 // justify-content: space-around;
                 justify-content: center;
                 .image {
-                    text-align: center;
-                    width: 40vw;
+                    width: 90vw;
                     // background-color: gray;
                     height: auto;
                 }
@@ -260,4 +262,5 @@ a {
     }
 }
 
+// desktop styles
 @import "responsive-queries";

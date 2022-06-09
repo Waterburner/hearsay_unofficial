@@ -54,12 +54,12 @@
 
             .menu-image-wrapper {
                 .menu-image {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
+                    // display: grid;
+                    // grid-template-columns: 1fr 1fr;
 
                     .image,
                     .scan {
-                        width: 25vw;
+                        width: 35vw;
                         max-height: 35vw;
                     }
                 }

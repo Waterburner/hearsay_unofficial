@@ -55,7 +55,6 @@ export default class MenuItem extends Component {
         const item_name = this.props.item_name;
         const item_des = this.props.item_description;
         const item_img_link = this.props.item_img_link;
-        console.log(item_name, item_img_link);
 
         // const item_scan_link = this.props.item_scan_link;
 

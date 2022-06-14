@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import Homepage from "./homepage/Homepage";
 import Menus from "./menu/Menus.js";
 import AllMenuItems from "./menu/Allmenuitems";
-import Dinner from "./menu/Dinner";
+// import Dinner from "./menu/Dinner";
 import NoMatch from "./NoMatch";
 
 export default class App extends Component {
@@ -32,7 +32,7 @@ export default class App extends Component {
                                 component={AllMenuItems}
                             />
 
-                            <Route path="/dinner_menu" component={Dinner} />
+                            {/* <Route path="/dinner_menu" component={Dinner} /> */}
 
                             <Route component={NoMatch} />
                         </Switch>

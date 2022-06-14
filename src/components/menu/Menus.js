@@ -68,30 +68,28 @@ export default class Menus extends Component {
                     <div className="menu-selection-wrapper">
                         <ul className="menu-selection">
                             <li>
-                                <NavLink to="/appetizer_menu">
-                                    Appetizers
-                                </NavLink>
+                                <NavLink to="/menu/:4">Appetizers</NavLink>
                             </li>
                         </ul>
                     </div>
                     <div className="menu-selection-wrapper">
                         <ul className="menu-selection">
                             <li>
-                                <NavLink to="/dinner_menu">Dinner</NavLink>
+                                <NavLink to="/menu/:1">Dinner</NavLink>
                             </li>
                         </ul>
                     </div>
                     <div className="menu-selection-wrapper">
                         <ul className="menu-selection">
                             <li>
-                                <NavLink to="/brunch_menu">Brunch</NavLink>
+                                <NavLink to="/menu/:2">Brunch</NavLink>
                             </li>
                         </ul>
                     </div>
                     <div className="menu-selection-wrapper">
                         <ul className="menu-selection">
                             <li>
-                                <NavLink to="/dessert_menu">Desserts</NavLink>
+                                <NavLink to="/menu/:3">Desserts</NavLink>
                             </li>
                         </ul>
                     </div>

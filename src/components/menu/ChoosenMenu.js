@@ -39,12 +39,25 @@ export default class ChoosenMenu extends Component {
         this.state = {
             isLoading: true,
             menu_id: null,
-            menu_name: "",
-            item_id: null,
+            data: { response: ["none"] },
         };
     }
 
+    // /menu_id=<id>
+    // change id=1 to id={menu_id}
+    backend_server = "http://localhost:5000/menu_id=1";
+    getItems() {
+        fetch(this.backend_server)
+            .then((response) => response.json())
+            .then((data) => this.setState({ data: { response: data } }))
+            .catch((error) => {
+                console.log("ChoosenMenu getItems() fetch error", error);
+            });
+    }
+
     render() {
+        console.log(this.state);
+
         return (
             <div className="choosen-menu-wrapper">
                 <div className="choosen-menu">

@@ -36,9 +36,8 @@ export default class ChoosenMenu extends Component {
 
         this.state = {
             isLoading: true,
-            menu_id: null,
+            menu_id: this.props.match.params.slug,
             data: { response: [] },
-            menu_name: this.props.menu_name,
         };
 
         this.getItems();
@@ -57,10 +56,13 @@ export default class ChoosenMenu extends Component {
     }
 
     displayMenuName() {
-        if (this.state.menu_name.length > 0) {
+        let menu_names = ["Dinner", "Brunch", "Drink", "Dessert", "Appetizer"];
+        if (this.state.menu_id.length > 0) {
             return (
                 <div className="choosen-menu-title-wrapper">
-                    <h2 className="choosen-menu-title">Dinner menu</h2>
+                    <h2 className="choosen-menu-title">
+                        {menu_names[this.state.menu_id - 1]} menu
+                    </h2>
                 </div>
             );
         }

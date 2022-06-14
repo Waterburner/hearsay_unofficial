@@ -32,7 +32,7 @@ export default function () {
                             </div>
 
                             <div className="menu-item-wrapper">
-                                <NavLink exact to="/">
+                                <NavLink to="/">
                                     <h3 className="menu-item">home</h3>
                                 </NavLink>
                             </div>
@@ -60,13 +60,13 @@ export default function () {
                             </div>
 
                             <div className="menu-item-wrapper">
-                                <NavLink to="sideworks">
+                                <NavLink to="/sideworks">
                                     <h3 className="menu-item">sideworks</h3>
                                 </NavLink>
                             </div>
 
                             <div className="menu-item-wrapper">
-                                <NavLink to="credits">
+                                <NavLink to="/credits">
                                     <h3 className="menu-item">credits</h3>
                                 </NavLink>
                             </div>

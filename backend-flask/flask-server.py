@@ -130,22 +130,15 @@ def executeDBQuery(choosenMenu_actual, col_name):
 def certainMenu(id):
     cur = mysql.connection.cursor()
     response = []
-    response.append(id)
-
-    cur.execute(f"SELECT menus_name FROM menus WHERE menus_id={id}") # menu_id is variable
-    choosenMenu = cur.fetchall()[0][0]
-    response.append(choosenMenu)
 
     cur.execute(f"SELECT menus_actual_name FROM menus WHERE menus_id={id}")
     choosenMenu_actual = cur.fetchall()[0][0]
     cur.execute(f"SELECT * FROM {choosenMenu_actual}")
 
-    response.append(executeDBQuery(choosenMenu_actual, "id"))
     response.append(executeDBQuery(choosenMenu_actual, "name"))
     response.append(executeDBQuery(choosenMenu_actual, "description"))
     response.append(executeDBQuery(choosenMenu_actual, "link"))
     response.append(executeDBQuery(choosenMenu_actual, "scanLink"))
-    response.append(executeDBQuery(choosenMenu_actual, "belongs_to_id"))
     api_response = jsonify(response)
     api_response.headers.add('Access-Control-Allow-Origin', '*')
     return api_response

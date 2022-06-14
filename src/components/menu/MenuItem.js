@@ -51,10 +51,23 @@ export default class MenuItem extends Component {
     //         });
     // }
 
+    displayImg() {
+        if (this.props.item_img_link != "null") {
+            return (
+                <img
+                    className="image"
+                    src={this.props.item_img_link}
+                    alt="food image goes here"
+                />
+            );
+        } else {
+            return <img className="image" alt="No picture yet…" />;
+        }
+    }
+
     render() {
         const item_name = this.props.item_name;
         const item_des = this.props.item_description;
-        const item_img_link = this.props.item_img_link;
 
         // const item_scan_link = this.props.item_scan_link;
 
@@ -74,11 +87,7 @@ export default class MenuItem extends Component {
 
                     <div className="menu-image-wrapper">
                         <div className="menu-image">
-                            <img
-                                className="image"
-                                src={item_img_link}
-                                alt="food image goes here"
-                            />
+                            {this.displayImg()}
 
                             {/* <div className="scan">
                                 <div className="sketchfab-embed-wrapper">

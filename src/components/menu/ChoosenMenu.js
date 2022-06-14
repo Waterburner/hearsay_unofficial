@@ -25,8 +25,6 @@ import MenuItem from "./MenuItem";
 //     ],
 //
 
-import React, { Component } from "react";
-
 // NEEDED DATA:
 // menu_id
 // menu_name
@@ -39,15 +37,18 @@ export default class ChoosenMenu extends Component {
         this.state = {
             isLoading: true,
             menu_id: null,
-            data: { response: ["none"] },
+            data: { response: [] },
+            menu_name: this.props.menu_name,
         };
+
+        this.getItems();
     }
 
     // /menu_id=<id>
     // change id=1 to id={menu_id}
-    backend_server = "http://localhost:5000/menu_id=1";
+
     getItems() {
-        fetch(this.backend_server)
+        fetch(`http://localhost:5000/menu_id=${this.props.match.params.slug}`)
             .then((response) => response.json())
             .then((data) => this.setState({ data: { response: data } }))
             .catch((error) => {
@@ -55,17 +56,39 @@ export default class ChoosenMenu extends Component {
             });
     }
 
-    render() {
-        console.log(this.state);
+    displayMenuName() {
+        if (this.state.menu_name.length > 0) {
+            return (
+                <div className="choosen-menu-title-wrapper">
+                    <h2 className="choosen-menu-title">Dinner menu</h2>
+                </div>
+            );
+        }
+    }
 
+    listItems() {
+        const { data } = this.state;
+        return (
+            data.response.length > 0 &&
+            data.response[0].map((item_name, count) => {
+                return (
+                    <MenuItem
+                        item_name={item_name}
+                        item_description={this.state.data.response[1][count]}
+                        item_img_link={this.state.data.response[2][count]}
+                        key={count}
+                    />
+                );
+            })
+        );
+    }
+    render() {
         return (
             <div className="choosen-menu-wrapper">
                 <div className="choosen-menu">
-                    <div className="choosen-menu-title-wrapper">
-                        <h2 className="choosen-menu-title">Dinner menu</h2>
-                    </div>
+                    {this.displayMenuName()}
 
-                    <MenuItem />
+                    {this.listItems()}
                 </div>
             </div>
         );

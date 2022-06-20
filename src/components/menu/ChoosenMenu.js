@@ -61,7 +61,7 @@ export default class ChoosenMenu extends Component {
             return (
                 <div className="choosen-menu-title-wrapper">
                     <h2 className="choosen-menu-title">
-                        {menu_names[this.state.menu_id - 1]} menu
+                        {menu_names[this.state.menu_id]} menu
                     </h2>
                 </div>
             );

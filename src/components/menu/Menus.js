@@ -30,13 +30,19 @@ export default class Menus extends Component {
         console.log(this.state);
         return (
             this.state.menus.length > 0 &&
-            this.state.menus.map((menu) => {
+            this.state.menus[0].map((menu, index) => {
                 return menu.map((item) => {
+                    var navLinkTarget = this.state.menus[1][index];
+                    navLinkTarget = "/menu/" + navLinkTarget;
                     return (
                         <div className="menus-wrapper">
                             <div className="menus">
                                 <h2 className="menus-head-wrapper">
-                                    <div className="menus-head">{item}</div>
+                                    <div className="menus-head">
+                                        <NavLink to={navLinkTarget}>
+                                            {item}
+                                        </NavLink>
+                                    </div>
                                 </h2>
 
                                 <div className="menu-selection-wrapper">

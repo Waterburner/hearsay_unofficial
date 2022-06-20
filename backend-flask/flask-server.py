@@ -125,7 +125,7 @@ def executeDBQuery(choosenMenu_actual, col_name):
     cur.execute(f"SELECT {choosenMenu_actual}_{col_name} FROM {choosenMenu_actual}")
     data = cur.fetchall()
     return data
-
+# choosen menu
 @app.route(f"/menu_id=<id>", methods=["GET"])
 def certainMenu(id):
     cur = mysql.connection.cursor()
@@ -154,13 +154,16 @@ def certainMenu(id):
     # }
 
 
-
+# all menus list
 @app.route("/allmenus", methods=["GET"])
 def allMenus():
     cur = mysql.connection.cursor()
     menu_list = []
     api_response = []
     cur.execute("SELECT menus_name FROM menus")
+    menu_list.append(cur.fetchall())
+
+    cur.execute("SELECT menus_id FROM menus")
     menu_list.append(cur.fetchall())
 
     api_response = jsonify(menu_list)

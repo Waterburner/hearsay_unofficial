@@ -152,28 +152,45 @@ a {
 // ================ MENUS =================
 .menus-wrapper {
     width: 100%;
-    .menus {
-        text-align: center;
 
-        .menus-head-wrapper {
-            .menus-head {
-                color: $hearsay-maroon;
-                font-size: $menus-head-font-size;
-            }
+    // .menus-head-wrapper {
+    //
+    // }
+
+    // .menu-selection-wrapper {
+    //     // add styles:
+    //     // Dinner, Brunch, Vegeterian, etc
+
+    //     font-size: $menus-list-font-size;
+
+    //     ul,
+    //     li {
+    //         list-style: none;
+    //     }
+    // }
+
+    .menu-navigation {
+        font-size: $menus-list-font-size;
+        text-align: center;
+        padding: 15px 0;
+
+        .menus-head {
+            color: $hearsay-maroon;
+            font-size: $menus-head-font-size;
         }
 
-        .menu-selection-wrapper {
-            // add styles:
-            // Dinner, Brunch, Vegeterian, etc
-
-            font-size: $menus-list-font-size;
-
-            ul {
-                list-style: none;
+        .menu-item-wrapper {
+            transition: 100ms ease-out;
+            &:hover {
+                background-color: whitesmoke;
+                a {
+                    color: $hearsay-maroon;
+                }
             }
         }
     }
 }
+
 // ================ END OF MENUS =================
 
 // ================ CHOOSEN MENU (Dinner, brunch, drinks etc) =================

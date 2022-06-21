@@ -8,6 +8,7 @@ import Homepage from "./homepage/Homepage";
 import Menus from "./menu/Menus.js";
 import AllMenuItems from "./menu/Allmenuitems";
 import ChoosenMenu from "./menu/ChoosenMenu";
+import Credits from "./credits";
 import NoMatch from "./NoMatch";
 
 export default class App extends Component {
@@ -37,6 +38,8 @@ export default class App extends Component {
                                 path="/menu/:slug"
                                 component={ChoosenMenu}
                             />
+
+                            <Route path="/credits" component={Credits} />
 
                             <Route component={NoMatch} />
                         </Switch>

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { NavLink } from "react-router-dom";
+
 export default function () {
     return (
         <div className="credits-wrapper">
@@ -12,6 +14,12 @@ export default function () {
                     <br />
                     <br />
                     All rights reserved.
+                    <br />
+                    <br />
+                    <br />
+                    <NavLink to="/">
+                        <h3 className="menu-item">Homepage</h3>
+                    </NavLink>
                 </p>
             </div>
         </div>

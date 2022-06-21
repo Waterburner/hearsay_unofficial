@@ -56,12 +56,21 @@ export default class ChoosenMenu extends Component {
     }
 
     displayMenuName() {
-        let menu_names = ["Dinner", "Brunch", "Drink", "Dessert", "Appetizer"];
+        let menu_list = [
+            "not a",
+            "Dinner",
+            "Brunch",
+            "Drink",
+            "Dessert",
+            "Appetaizer",
+        ];
+        let menu_index = this.state.menu_id;
+
         if (this.state.menu_id.length > 0) {
             return (
                 <div className="choosen-menu-title-wrapper">
                     <h2 className="choosen-menu-title">
-                        {menu_names[this.state.menu_id]} menu
+                        {menu_list[menu_index]} menu
                     </h2>
                 </div>
             );

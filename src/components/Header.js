@@ -73,10 +73,12 @@ export default function () {
                         </div>
                     </div>
                 </div>
-                <div className="header-logo">
-                    <img src={headerLogo} alt="" className="logo" />
-                    {/* <div className="header-logo-img"></div> */}
-                </div>
+                <NavLink to="/">
+                    <div className="header-logo">
+                        <img src={headerLogo} alt="" className="logo" />
+                        {/* <div className="header-logo-img"></div> */}
+                    </div>
+                </NavLink>
             </div>
         </div>
     );

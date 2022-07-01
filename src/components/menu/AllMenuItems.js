@@ -27,7 +27,8 @@ export default class AllMenuItems extends Component {
     // backend_server_items = "http://localhost:5000/allitems";
     // backend_server_menus = "http://localhost:5000/allmenus";
     // backend_server_item_names = "http://localhost:5000/allitems_detailed";
-    backend_server = "http://localhost:5000/allitems_detailed";
+    backend_server =
+        "https://hearsay-unofficial-backend.herokuapp.com/allitems_detailed";
 
     getItems() {
         fetch(this.backend_server)

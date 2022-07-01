@@ -12,7 +12,8 @@ export default class Menus extends Component {
         this.getMenus();
     }
     // address to backend server (fetch data from DB)
-    backend_server_menus = "http://localhost:5000/allmenus";
+    backend_server_menus =
+        "https://hearsay-unofficial-backend.herokuapp.com/allmenus";
 
     getMenus() {
         fetch(this.backend_server_menus)

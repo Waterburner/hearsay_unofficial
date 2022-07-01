@@ -47,7 +47,9 @@ export default class ChoosenMenu extends Component {
     // change id=1 to id={menu_id}
 
     getItems() {
-        fetch(`http://localhost:5000/menu_id=${this.props.match.params.slug}`)
+        fetch(
+            `https://hearsay-unofficial-backend.herokuapp.com/menu_id=${this.props.match.params.slug}`
+        )
             .then((response) => response.json())
             .then((data) => this.setState({ data: { response: data } }))
             .catch((error) => {

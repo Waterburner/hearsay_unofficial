@@ -1,15 +1,22 @@
+import os
 from flask import Flask, render_template, request, redirect, jsonify
 from flask_mysqldb import MySQL
-import yaml
+
+# import yaml
 
 app = Flask(__name__)
 
 #configure db 
-db = yaml.safe_load(open('db.yaml'))
-app.config['MYSQL_HOST'] = db['mysql_host']
-app.config['MYSQL_USER'] = db['mysql_user']
-app.config['MYSQL_PASSWORD'] = db['mysql_password'] 
-app.config['MYSQL_DB'] = db['mysql_db']
+# db = yaml.safe_load(open('db.yaml'))
+# app.config['MYSQL_HOST'] = db['mysql_host']
+# app.config['MYSQL_USER'] = db['mysql_user']
+# app.config['MYSQL_PASSWORD'] = db['mysql_password'] 
+# app.config['MYSQL_DB'] = db['mysql_db']
+
+app.config['MYSQL_HOST'] = os.environ.get("HEARSAY_MYSQL_HOST")
+app.config['MYSQL_USER'] = os.environ.get("HEARSAY_MYSQL_USER")
+app.config['MYSQL_PASSWORD'] = os.environ.get("HEARSAY_MYSQL_PASSWORD")
+app.config['MYSQL_DB'] = os.environ.get("HEARSAY_MYSQL_NAME")
 
 mysql = MySQL(app)
 
